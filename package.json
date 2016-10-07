@@ -1,0 +1,22 @@
+{
+  "name": "polling-app",
+  "version": "1.0.0",
+  "description": "Polling app experiment with NODEJS and RethinkDB",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Khanh Dao",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.0.1",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "payload-validator": "^1.0.4",
+    "rethinkdb": "^2.3.3",
+    "socket.io": "^1.5.0"
+  },
+  "devDependencies": {
+    "bower": "^1.7.9"
+  }
+}
