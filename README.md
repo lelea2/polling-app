@@ -13,4 +13,8 @@ Start Rethink Admin screen
 
 ```rethinkdb --bind all```
 
-
+###### Technology
+* NodeJS (Express)
+* SocketIO
+* RethinkDB
+* AngularJS
