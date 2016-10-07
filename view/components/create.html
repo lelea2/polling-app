@@ -3,34 +3,35 @@
   <div class="row">
     <form class="col s12" name="pollForm">
       <div class="input-field">
-        <textarea id="question" class="materialize-textarea" length="500" ng-model="formData.pollQuestion"></textarea>
+        <textarea id="question" name="question" required class="materialize-textarea" length="500" ng-model="formData.pollQuestion"></textarea>
         <label for="question">Please enter poll question</label>
+        <div ng-messages="pollForm.question.$error" role="alert"><!-- Error handler using angular ngMessages -->
+          <div ng-message="required">This is required.</div>
+        </div>
       </div>
       <div class="input-field">
-        <input id="option_1" type="text" ng-maxlength="100" ng-model="formData.pollOption1">
-        <label for="option_1">Option 1</label>
-        <div ng-messages="pollForm.option1.$error" role="alert"><!-- Error handler using angular ngMessages -->
+        <input required id="option1" name="option1" type="text" ng-maxlength="100" ng-model="formData.pollOption1">
+        <label for="option1">Option 1</label>
+        <div class="error" ng-messages="pollForm.option1.$error" role="alert"><!-- Error handler using angular ngMessages -->
           <div ng-message="required">This is required.</div>
           <div ng-message="maxlength">The name has to be less than 100 characters long.</div>
         </div>
       </div>
       <div class="input-field">
-        <input id="option_2" type="text" ng-maxlength="100" ng-model="formData.pollOption2">
-        <label for="option_2">Option 2</label>
-        <div ng-messages="pollForm.option2.$error" role="alert"><!-- Error handler using angular ngMessages -->
+        <input required id="option2" name="option2" type="text" ng-maxlength="100" ng-model="formData.pollOption2">
+        <label for="option2">Option 2</label>
+        <div class="error" ng-messages="pollForm.option2.$error" role="alert"><!-- Error handler using angular ngMessages -->
           <div ng-message="required">This is required.</div>
           <div ng-message="maxlength">The name has to be less than 100 characters long.</div>
         </div>
       </div>
       <div class="input-field">
-        <input id="option_3" type="text" ng-maxlength="100" ng-model="formData.pollOption3">
-        <label for="option_3">Option 3</label>
-        <div ng-messages="pollForm.option3.$error" role="alert"><!-- Error handler using angular ngMessages -->
+        <input required id="option3" name="option3" type="text" ng-maxlength="100" ng-model="formData.pollOption3">
+        <label for="option3">Option 3</label>
+        <div class="error" ng-messages="pollForm.option3.$error" role="alert"><!-- Error handler using angular ngMessages -->
           <div ng-message="required">This is required.</div>
           <div ng-message="maxlength">The name has to be less than 100 characters long.</div>
         </div>
-
-        <pre>pollForm.option3.$error = {{ pollForm.option3.$error | json }}</pre>
       </div>
       <button class="btn waves-effect waves-light" type="submit" name="action" ng-disabled="pollForm.$invalid" ng-click="submitPoll($event)">
         Submit

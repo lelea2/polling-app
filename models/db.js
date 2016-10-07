@@ -2,14 +2,15 @@
 
 'use strict';
 
-var rethinkdb = require('rethinkdb');
-var async = require('async');
+var rethinkdb = require('rethinkdb'),
+    async = require('async'),
+    CONFIG = require('../config/config');
 
 class db {
   setupDb() {
     var self = this;
     async.waterfall([
-      function(callback) {
+      function(callback) { //Connect to DB server
         self.connectToRethinkDbServer(function(err,connection) {
           if(err) {
             return callback(true, 'Error in connecting RethinkDB');
@@ -17,8 +18,8 @@ class db {
           callback(null,connection);
         });
       },
-      function(connection,callback) {
-        rethinkdb.dbCreate('realestate_poll').run(connection,function(err, result) {
+      function(connection,callback) { //Create database
+        rethinkdb.dbCreate(CONFIG.DB_NAME).run(connection,function(err, result) {
           if(err) {
             console.log('Database already created');
           } else {
@@ -27,8 +28,8 @@ class db {
           callback(null,connection);
         });
       },
-      function(connection,callback) {
-        rethinkdb.db('polls').tableCreate('poll').run(connection,function(err,result) {
+      function(connection,callback) { //Create table
+        rethinkdb.db(CONFIG.DB_NAME).tableCreate(CONFIG.TABLE_NAME).run(connection,function(err,result) {
           connection.close();
           if(err) {
             console.log('table already created');
@@ -56,7 +57,7 @@ class db {
     rethinkdb.connect({
       host : 'localhost',
       port : 28015,
-      db : 'polls'
+      db : CONFIG.DB_NAME
     }, function(err,connection) {
       callback(err,connection);
     });

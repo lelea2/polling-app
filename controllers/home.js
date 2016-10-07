@@ -1,10 +1,12 @@
 'use strict';
 
 var express = require('express'),
-    router = express.Router();
+    path    = require('path'),
+    router  = express.Router();
 
-router.get('/', function(req, res) {
-  res.send('<h1>Polling App</h1>');
+//Render index page for home page
+router.get('/',function(req,res){
+  res.sendFile(path.join(__dirname + '/../view/index.html'));
 });
 
 module.exports = router;

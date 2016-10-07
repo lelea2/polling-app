@@ -1,9 +1,11 @@
 'use strict';
-var rethinkdb = require('rethinkdb');
-var db = require('./db');
-var async = require('async');
+var rethinkdb = require('rethinkdb'),
+    db = require('./db'),
+    async = require('async'),
+    CONFIG = require('../config/config');
 
 class polls {
+  //Helper function to add new poll data
   addNewPolls(pollData,callback) {
     async.waterfall([
       function(callback) {
@@ -16,9 +18,9 @@ class polls {
         });
       },
       function(connection,callback) {
-        rethinkdb.table('poll').insert({
-            'question' : pollData.question,
-            'polls' : pollData.polls
+        rethinkdb.table(CONFIG.TABLE_NAME).insert({
+          'question': pollData.question, //question
+          'polls': pollData.polls //question data
         }).run(connection,function(err,result) {
           connection.close();
           if(err) {
@@ -44,7 +46,7 @@ class polls {
         });
       },
       function(connection,callback) {
-        rethinkdb.table('poll').get(pollData.id).run(connection,function(err,result) {
+        rethinkdb.table(CONFIG.TABLE_NAME).get(pollData.id).run(connection,function(err,result) {
           if(err) {
             return callback(true, 'Error fetching polls to database');
           }
@@ -54,7 +56,7 @@ class polls {
               break;
             }
           }
-          rethinkdb.table('poll').get(pollData.id).update(result).run(connection,function(err,result) {
+          rethinkdb.table(CONFIG.TABLE_NAME).get(pollData.id).update(result).run(connection,function(err,result) {
             connection.close();
             if(err) {
               return callback(true, 'Error updating the vote');
@@ -68,6 +70,7 @@ class polls {
     });
   }
 
+  //Helper function to get all poll data
   getAllPolls(callback) {
     async.waterfall([
       function(callback) {
@@ -80,7 +83,7 @@ class polls {
         });
       },
       function(connection,callback) {
-        rethinkdb.table('poll').run(connection,function(err,cursor) {
+        rethinkdb.table(CONFIG.TABLE_NAME).run(connection,function(err,cursor) {
           connection.close();
           if(err) {
             return callback(true, 'Error fetching polls to database');
