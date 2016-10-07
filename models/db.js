@@ -18,7 +18,7 @@ class db {
         });
       },
       function(connection,callback) {
-        rethinkdb.dbCreate('polls').run(connection,function(err, result) {
+        rethinkdb.dbCreate('realestate_poll').run(connection,function(err, result) {
           if(err) {
             console.log('Database already created');
           } else {
