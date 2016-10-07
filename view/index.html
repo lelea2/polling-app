@@ -3,36 +3,33 @@
   <head>
     <meta charset="utf-8">
     <title>Polling App</title>
-    <link href="./bower_components/angular-material/angular-material.css" rel="stylesheet" />
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="./bower_components/materialize/dist/css/materialize.min.css" rel="stylesheet" medai="screen,projection">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" href="http://www.iwg-it.com/wp-content/uploads/2013/09/favicon.png" type="image/x-icon" />
     <base href="/">
   </head>
-  <body ng-app="myApp" layout="column" ng-controller="appController">
-    <md-toolbar layout="row" flex="1">
-      <md-menu-bar>
-        <md-menu>
-          <md-button ng-herf="/#/">Home</md-button>
-          <span></span>
-        </md-menu>
-        <md-menu>
-          <md-button ng-herf="/#/">Create Poll</md-button>
-          <span></span>
-        </md-menu>
-        <md-menu>
-          <md-button ng-herf="/#/">View Poll</md-button>
-          <span></span>
-        </md-menu>
-      </md-menu-bar>
-    </md-toolbar>
-    <div flex layout="column" layout-align="left" ng-view>
-
+  <body ng-app="myApp" ng-controller="appController">
+    <div class="wrapper">
+      <div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper">
+            <a href="/#/" class="brand-logo"><i class="material-icons">home</i>Home</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="/#/create">Create Poll</a></li>
+              <li><a href="/#/view">View Poll</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
     </div>
+    <script src="./bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
     <script src="./bower_components/angular/angular.js" type="text/javascript"></script>
     <script src="/socket.io/socket.io.js" type="text/javascript"></script>
+    <script src="./bower_components/materialize/dist/js/materialize.min.js" type="text/javascript"></script>
     <script src="./bower_components/angular-route/angular-route.js" type="text/javascript"></script>
     <script src="./bower_components/angular-messages/angular-messages.js" type="text/javascript"></script>
     <script src="./bower_components/angular-aria/angular-aria.js" type="text/javascript"></script>
-    <script src="./bower_components/angular-animate/angular-animate.js" type="text/javascript"></script>
-    <script src="./bower_components/angular-material/angular-material.js" type="text/javascript"></script>
     <script src="./js/app.js" type="text/javascript"></script>
   </body>
 </html>
