@@ -11,7 +11,7 @@ var express = require('express'),
 //   res.send('<h1>HIIII</h1>');
 // });
 
-
+app.use(express.static(__dirname + '/view'));
 app.use(bodyParser.json());
 // app.use('/', router);
 app.use(require('./controllers'));

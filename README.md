@@ -6,9 +6,8 @@ Polling app implemented with NodeJS and Rethink DB
 
 ```brew update && brew install rethinkdb```
 
-Start Rethink DB server
+Start Rethink DB server `rethinkdb`
 
-```rethinkdb```
 
 Start Rethink Admin screen
 
