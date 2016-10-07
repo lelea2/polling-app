@@ -3,7 +3,7 @@
 var express = require('express'),
     router = express.Router(),
     //Poll Model
-    pollModel = require('../models/polls');
+    pollModel = require('../models/poll');
 
 router.route('/')
   .get(function(req, res) {
